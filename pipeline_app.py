@@ -1,10 +1,13 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, accuracy_score
+import joblib
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Load Data
 def load_data(file_path, target_column):
@@ -57,6 +60,30 @@ def train_and_evaluate_pipeline(file_path, target_column, algorithm, test_size=0
     print(f"Cross-validation scores: {cv_scores}")
     print(f"Mean CV accuracy: {cv_scores.mean():.2f}")
 
+    return pipeline, X, y
+
+# Hyperparameter Tuning
+def tune_hyperparameters(pipeline, X, y, param_grid):
+    grid_search = GridSearchCV(pipeline, param_grid)
+    grid_search.fit(X, y)
+    print(f"Best parameters: {grid_search.best_params_}")
+    return grid_search.best_estimator_
+
+# Save Model
+def save_model(model, filename):
+    joblib.dump(model, filename)
+    print(f"Model saved to {filename}")
+
+# Visualize Confusion Matrix
+def plot_confusion_matrix(y_true, y_pred):
+    from sklearn.metrics import confusion_matrix
+    cm = confusion_matrix(y_true, y_pred)
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+    plt.xlabel('Predicted')
+    plt.ylabel('True')
+    plt.title('Confusion Matrix')
+    plt.show()
+
 # Main Function
 if __name__ == "__main__":
     import argparse
@@ -70,7 +97,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Run the pipeline
-    train_and_evaluate_pipeline(
+    pipeline, X, y = train_and_evaluate_pipeline(
         file_path=args.file_path,
         target_column=args.target_column,
         algorithm=args.algorithm,
@@ -78,3 +105,13 @@ if __name__ == "__main__":
         random_state=args.random_state,
         cv=args.cv
     )
+    
+    # Save the model
+    save_model(pipeline, 'heart_disease_model.pkl')
+    
+    # Optionally, tune hyperparameters
+    param_grid = {
+        'model__C': [0.1, 1, 10],  # Example parameter for LogisticRegression
+        'model__solver': ['liblinear', 'saga']  # Example parameter for LogisticRegression
+    }
+    best_pipeline = tune_hyperparameters(pipeline, X, y, param_grid)
