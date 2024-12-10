@@ -12,6 +12,8 @@ from logger_manager import get_logger
 # Logger configuration
 logger = get_logger('PipelineApp')
 
+# TODO implement logic for both regression and classification task
+
 # Load Data
 def load_data(file_path, target_column):
   """
