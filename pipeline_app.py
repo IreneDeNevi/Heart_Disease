@@ -4,6 +4,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report, accuracy_score
 import joblib
 import matplotlib.pyplot as plt
@@ -28,6 +29,8 @@ def create_pipeline(algorithm, **kwargs):
         model = LogisticRegression(**kwargs)
     elif algorithm == "RandomForestClassifier":
         model = RandomForestClassifier(**kwargs)
+    elif algorithm == "DecisionTreeClassifier":
+        model = DecisionTreeClassifier(**kwargs)
     else:
         raise ValueError(f"Unsupported algorithm: {algorithm}")
     pipeline = Pipeline([('scaler', StandardScaler()), ('model', model)])
