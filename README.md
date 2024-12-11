@@ -1,4 +1,8 @@
 # Heart_Disease - Code Documentation
+## Requirements
+To use this code, the following libraries must be installed using this command:
+`pip install -r requirements.txt`
+
 ## Heart Disease Dataset Exploratory Data Analysis
 ### Overview
 The Jupiter notebook `heart_disease_eda.ipynb` performs exploratory data analysis (EDA) and preprocessing on Heart Disease Dataset (link: https://www.kaggle.com/datasets/yasserh/heart-disease-dataset). The goal is to clean, explore, and prepare the data for machine learning tasks.
