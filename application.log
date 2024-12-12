@@ -1,0 +1,12 @@
+2024-12-10 00:12:50,037 - PipelineApp - INFO - Loading data from data/heart_cleaned.csv
+2024-12-10 00:12:50,053 - PipelineApp - INFO - Data loaded successfully with shape (302, 14)
+2024-12-10 00:12:50,053 - PipelineApp - INFO - Creating pipeline with algorithm: DecisionTreeClassifier
+2024-12-10 00:12:50,053 - ClassificationPredictor - INFO - Initializing ClassificationPredictor with algorithm: DecisionTreeClassifier
+2024-12-10 00:12:50,053 - PipelineApp - INFO - Pipeline created successfully.
+2024-12-10 00:12:50,053 - PipelineApp - INFO - Training pipeline...
+2024-12-10 00:12:50,069 - PipelineApp - INFO - Pipeline training completed.
+2024-12-10 00:12:50,071 - PipelineApp - INFO - Model evaluation completed.
+2024-12-10 00:12:50,111 - PipelineApp - INFO - Cross-validation completed.
+2024-12-10 00:12:50,111 - PipelineApp - INFO - Model saved to heart_disease_model.pkl
+2024-12-10 00:12:50,111 - PipelineApp - INFO - Starting hyperparameter tuning...
+2024-12-10 00:13:46,315 - PipelineApp - INFO - Hyperparameter tuning completed. Best parameters: {'model__ccp_alpha': 0.0, 'model__criterion': 'entropy', 'model__max_depth': None, 'model__max_features': None, 'model__min_samples_leaf': 10, 'model__min_samples_split': 5, 'model__splitter': 'random'}2024-12-10 00:17:27,909 - PipelineApp - INFO - Loading data from data/heart_cleaned.csv
