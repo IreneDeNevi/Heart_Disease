@@ -127,7 +127,7 @@ class AutoML:
 
         Returns:
         model: Scikit-learn estimator
-            """
+        """
         if algorithm == "LogisticRegression":
             return LogisticRegression(max_iter=1000)
         elif algorithm == "RandomForestClassifier":
@@ -284,7 +284,6 @@ class AutoML:
             raise ValueError("Must call init() first")
         return self.task_type
     
-
 
     def get_processed_data(self) -> tuple:
         if self.features is None or self.target is None:

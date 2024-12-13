@@ -39,6 +39,8 @@ def save_model(model, filename):
     logger.error("Error saving model: %s", str(e))
     raise
 
+
+
 # Visualize Confusion Matrix
 def plot_confusion_matrix(y_true, y_pred):
   from sklearn.metrics import confusion_matrix
@@ -53,59 +55,6 @@ def plot_confusion_matrix(y_true, y_pred):
     logger.error("Error plotting confusion matrix: %s", str(e))
     raise
 
-def create_param_grid(algorithm):
-    """
-    Return a parameter grid for the specified algorithm.
-    """
-    if algorithm == 'LogisticRegression':
-        return {
-            'model__C': [0.1, 1, 10],
-            'model__solver': ['liblinear', 'saga']
-        }
-    elif algorithm == 'DecisionTreeClassifier':
-        return {
-            'model__criterion': ['gini', 'entropy'],
-            'model__splitter': ['best', 'random'],
-            'model__max_depth': [None, 5, 10, 20, 30],
-            'model__min_samples_split': [2, 5, 10],
-            'model__min_samples_leaf': [1, 2, 5, 10],
-            'model__max_features': [None, 'sqrt', 'log2'],
-            'model__ccp_alpha': [0.0, 0.01, 0.1],
-        }
-    elif algorithm == 'RandomForestClassifier':
-        return {
-            'model__n_estimators': [50, 100],
-            'model__max_depth': [None, 10, 20],
-            'model__min_samples_split': [2, 5],
-            'model__min_samples_leaf': [1, 2]
-        }
-    elif algorithm == 'LinearRegression':
-        return {
-            'model__fit_intercept': [True, False],
-            'model__normalize': [True, False]
-        }
-    elif algorithm == 'DecisionTreeRegressor':
-        return {
-            'model__criterion': ['squared_error', 'absolute_error', 'poisson'],
-            'model__splitter': ['best', 'random'],
-            'model__max_depth': [None, 5, 10, 20, 30],
-            'model__min_samples_split': [2, 5, 10],
-            'model__min_samples_leaf': [1, 2, 5, 10],
-            'model__max_features': [None, 'sqrt', 'log2'],
-            'model__ccp_alpha': [0.0, 0.01, 0.1],
-        }
-    elif algorithm == 'RandomForestRegressor':
-        return {
-            'model__n_estimators': [50, 100, 200],
-            'model__max_depth': [None, 10, 20],
-            'model__min_samples_split': [2, 5],
-            'model__min_samples_leaf': [1, 2],
-            'model__bootstrap': [True, False]
-        }
-    else:
-        logger.error("Unsupported algorithm: %s", algorithm)
-        raise ValueError(f"Unsupported algorithm: {algorithm}")
-      
 # Main Function
 if __name__ == "__main__":
   import argparse
@@ -133,7 +82,7 @@ if __name__ == "__main__":
     save_model(pipeline, 'heart_disease_model.pkl')
     
     # tune hyperparameters
-    param_grid = create_param_grid(args.algorithm)
+    param_grid = AutoML.create_param_grid(args.algorithm)
 
     best_pipeline = tune_hyperparameters(pipeline, X, y, param_grid)
 
