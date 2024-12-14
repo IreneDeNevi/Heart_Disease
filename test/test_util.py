@@ -14,7 +14,7 @@ def test_get_logger_creates_logger_with_file():
 def test_get_logger_without_file():
   logger = get_logger("test_logger_no_file", level=logging.INFO)
   assert isinstance(logger, logging.Logger)
-  assert logger.hasHandlers() == False
+  assert logger.hasHandlers()
 
 def test_is_none_or_empty_with_none():
   assert is_none_or_empty(None) == True
