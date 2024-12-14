@@ -43,7 +43,7 @@ if __name__ == "__main__":
   parser = argparse.ArgumentParser(description="Run a machine learning pipeline for heart disease data")
   parser.add_argument("csv_path", help="Path to the cleaned CSV file")
   parser.add_argument("target_column", help="Target column name")
-  parser.add_argument("algorithm", help="ML algorithm to use (LogisticRegression or RandomForestClassifier)")
+  parser.add_argument("algorithm", help="ML algorithm to use")
   parser.add_argument("--test_size", type=float, default=0.2, help="Proportion of test data")
   parser.add_argument("--random_state", type=int, default=42, help="Random state for reproducibility")
   parser.add_argument("--cv", type=int, default=5, help="Number of cross-validation folds")
