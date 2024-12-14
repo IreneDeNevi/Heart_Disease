@@ -1,0 +1,42 @@
+2024-12-14 12:50:42,636 - AutoML - INFO - init - CSV path: [csv/heart.csv], Target Column: [target], Algorithm: [DecisionTreeClassifier], Random State [40]
+2024-12-14 12:50:42,636 - AutoML - INFO - initialize_model - Choosing Model...
+2024-12-14 12:50:42,638 - AutoML - INFO - initialize_model - Model Initialized: DecisionTreeClassifier()
+2024-12-14 12:50:42,638 - AutoML - INFO - load_dataset - Loading dataset...
+2024-12-14 12:50:42,641 - AutoML - INFO - load_dataset - Dataset loaded successfully
+2024-12-14 12:50:42,641 - AutoML - INFO - check_if_dataset_contains_target - Checking target column...
+2024-12-14 12:50:42,641 - AutoML - INFO - is_dataset_empty - The dataset is not empty
+2024-12-14 12:50:42,641 - AutoML - INFO - check_if_dataset_contains_target - Target column named: target
+2024-12-14 12:50:42,642 - AutoML - INFO - preprocess_data - Categorical columns:
+Index([], dtype='object')
+2024-12-14 12:50:42,643 - AutoML - INFO - preprocess_data - Numerical columns:
+Index(['age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalach',
+       'exang', 'oldpeak', 'slope', 'ca', 'thal'],
+      dtype='object')
+2024-12-14 12:50:42,643 - AutoML - INFO - preprocess_data - Processing numerical columns and detecting outliers...
+2024-12-14 12:50:42,644 - AutoML - INFO - preprocess_data - Total outliers found in age: 0
+2024-12-14 12:50:42,646 - AutoML - INFO - preprocess_data - Total outliers found in sex: 0
+2024-12-14 12:50:42,648 - AutoML - INFO - preprocess_data - Total outliers found in cp: 0
+2024-12-14 12:50:42,650 - AutoML - INFO - preprocess_data - Total outliers found in trestbps: 9
+2024-12-14 12:50:42,654 - AutoML - INFO - preprocess_data - Total outliers found in chol: 5
+2024-12-14 12:50:42,656 - AutoML - INFO - preprocess_data - Total outliers found in fbs: 45
+2024-12-14 12:50:42,658 - AutoML - INFO - preprocess_data - Total outliers found in restecg: 0
+2024-12-14 12:50:42,660 - AutoML - INFO - preprocess_data - Total outliers found in thalach: 1
+2024-12-14 12:50:42,662 - AutoML - INFO - preprocess_data - Total outliers found in exang: 0
+2024-12-14 12:50:42,665 - AutoML - INFO - preprocess_data - Total outliers found in oldpeak: 5
+2024-12-14 12:50:42,666 - AutoML - INFO - preprocess_data - Total outliers found in slope: 0
+2024-12-14 12:50:42,668 - AutoML - INFO - preprocess_data - Total outliers found in ca: 25
+2024-12-14 12:50:42,671 - AutoML - INFO - preprocess_data - Total outliers found in thal: 2
+2024-12-14 12:50:42,678 - AutoML - INFO - save_model - Saving model...
+2024-12-14 12:50:42,679 - AutoML - INFO - save_model - Model saved to heart.pkl
+2024-12-14 12:50:42,680 - AutoML - INFO - train_and_evaluate - Test Size: 0.3, Random State: 40, CV Folds: 3
+2024-12-14 12:50:42,681 - AutoML - INFO - tune_hyperparameters - Starting hyperparameter tuning...
+2024-12-14 12:51:06,315 - AutoML - INFO - tune_hyperparameters - Hyperparameter tuning completed. Best parameters: {'ccp_alpha': 0.01, 'criterion': 'entropy', 'max_depth': 25, 'max_features': None, 'min_samples_leaf': 5, 'min_samples_split': 8, 'splitter': 'random'}
+2024-12-14 12:51:06,315 - AutoML - INFO - train_and_evaluate - Predicting values of the best model...
+2024-12-14 12:51:06,337 - AutoML - INFO - train_and_evaluate - Results of Classification task:
+{
+    "accuracy": 0.8351648351648352,
+    "cv_mean": 0.7326732673267328,
+    "cv_std": 0.021388583163062264
+}
+2024-12-14 12:51:06,338 - AutoML - INFO - train_and_evaluate - Results of Classification task:
+{'accuracy': 0.8351648351648352, 'cv_mean': 0.7326732673267328, 'cv_std': 0.021388583163062264, 'classification_report': '              precision    recall  f1-score   support\n\n           0       0.84      0.78      0.81        40\n           1       0.83      0.88      0.86        51\n\n    accuracy                           0.84        91\n   macro avg       0.84      0.83      0.83        91\nweighted avg       0.84      0.84      0.83        91\n'}
