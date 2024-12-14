@@ -103,3 +103,56 @@ This file contains test cases for utility functions used in the project. It test
 1. `get_logger`: Verifies that a logger is created either with or without a log file.
 2. `is_none_or_empty`: Checks if a given value is None, an empty string, or a string with only whitespace.
 3. `check_mandatory_parameters`: Verifies that mandatory parameters (CSV path, target column, and algorithm) are not empty or None, raising appropriate errors when they are missing.
+
+### How To Run Unit Tests 
+Before running the tests, install all the libraries contained in the `requirements.txt` file, specifically `pytest`
+
+Run the following command in the terminal from the project root:
+```bash
+pytest
+```
+To run specific test files:
+```bash
+pytest tests/test_automl.py
+pytest tests/test_util.py
+```
+
+Note: if you want a verbose output, add -v flag to see detailed results.
+```bash
+pytest -v
+```
+
+### How to Interpret Test Results
+Three outcomes are possible to visualize:
+
+1. **PASSED**: The test passed successfully. This means the functionality is working as expected for the tested case.
+2. **FAILED**: A failure indicates that the code does not behave as expected. The output will show:
+    * The test name.
+    * Assertion or exception that caused the failure.
+    * The line number where the failure occurred.
+3. **SKIPPED** *or* **XFAIL**: These are tests that are intentionally skipped or expected to fail. Check if these match the intended behavior.
+
+### Common Troubleshooting Steps and Debugging Tips
+After running pytest, in the error trace, the user can perform the following common troubleshooting steps:
+1. Review Error Logs provided by pytest to identify the failing assertion or exception
+2. Reproduce Locally, e.g. isolate the failing test by running it directly:
+
+
+```bash
+pytest tests/test_automl.py::test_initialize_model_logistic_regression
+```
+
+3. Verify Fixtures like `set_csv_file` or `automl_instance` are set up correctly
+
+4. Validate Inputs, e.g check all parameters or files required by tests are correctly formatted.
+
+5. Debugging Techniques
+  * Enable Debugging: use IDE debugging tools.
+
+  * Add Logs: Use print() or Python's logging module in the code or test for intermediate output:
+
+
+      ```python
+      print("Debug info:", variable)
+      ```
+
