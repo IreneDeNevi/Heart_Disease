@@ -34,7 +34,7 @@ class AutoML:
         self.best_score = float('-inf')
         self.outlier_info = {}
     
-    def init(self, csv_path: str, target_name: str, algorithm: str , random_state: int, model_name: str) -> None:
+    def init(self, csv_path: str, target_name: str, algorithm: str , random_state: int = 42, model_name: str = 'model') -> None:
         logger.info(f"CSV path: [{csv_path}], Target Column: [{target_name}], Algorithm: [{algorithm}], Random State [{random_state}]")
 
         #Set algorithm

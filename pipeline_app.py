@@ -4,7 +4,7 @@ import itertools
 import argparse
 import threading
 
-from AutoML import AutoML
+from automl import AutoML
 import util
 import importlib
 importlib.reload(util)
@@ -18,7 +18,7 @@ def show_loading_message(message="Processing, please do not close this window"):
   Display a loading message with a rotating spinner in the console.
   
   Args:
-      message (str): The message to display.
+    message (str): The message to display.
   """
   spinner = itertools.cycle(['-', '\\', '|', '/'])  # cycle for the wheel
   sys.stdout.write(f"\n{message}... ")  # Initial message
@@ -38,7 +38,7 @@ def show_loading_message(message="Processing, please do not close this window"):
 # Main Function 
 if __name__ == "__main__":
   def run_loading():
-      show_loading_message()
+    show_loading_message()
 
   parser = argparse.ArgumentParser(description="Run a machine learning pipeline for heart disease data")
   parser.add_argument("csv_path", help="Path to the cleaned CSV file")
